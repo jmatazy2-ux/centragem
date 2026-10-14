@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CENTRAGEM Connect</title>
+<meta name="description" content="Place de marché B2B de l'or et du diamant tracés d'origine centrafricaine — démonstrateur.">
+<meta name="theme-color" content="#0a1826">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root{
+    --bg:#0a1826; --bg2:#0e2033; --gold:#c9a24b; --gold-b:#e6cd85;
+    --teal:#4bb3ac; --ink:#eaf1f8; --muted:#9fb2c6;
+    --line:#1d344c; --card:#102539;
+    --r:16px; --r-lg:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:Georgia,"Times New Roman",serif}
+  a{color:var(--teal);text-decoration:none}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,24,38,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;
+    height:60px;max-width:760px;margin:0 auto;padding:0 18px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.02em}
+  .gem{width:22px;height:22px;transform:rotate(45deg);
+    background:linear-gradient(135deg,var(--gold-b),var(--gold));border-radius:4px}
+  .brand small{color:var(--gold-b);font-weight:600;letter-spacing:.14em;font-size:.68rem}
+  .installbtn{
+    background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1a1203;
+    border:none;border-radius:999px;padding:9px 16px;font-weight:700;font-size:.85rem;
+    cursor:pointer;box-shadow:0 4px 14px rgba(201,162,75,.3)
+  }
+
+  .hero{
+    padding:54px 0 40px;text-align:left;
+    background:
+      radial-gradient(900px 380px at 80% -10%, rgba(75,179,172,.12), transparent),
+      radial-gradient(700px 320px at 0% 0%, rgba(201,162,75,.10), transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{color:var(--gold-b);letter-spacing:.18em;font-size:.7rem;font-weight:700;
+    text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
+  h1{font-size:clamp(2.1rem,7vw,3.1rem);line-height:1.08;font-weight:800;margin-bottom:18px}
+  h1 em{font-style:italic;color:var(--gold-b)}
+  .lead{color:var(--muted);font-size:1.05rem;max-width:560px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .btn{padding:13px 22px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none}
+  .btn-gold{background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1a1203}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  .kicker{color:var(--teal);letter-spacing:.14em;font-size:.72rem;font-weight:700;
+    text-transform:uppercase;margin-bottom:10px}
+  h2{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:22px}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:20px;
+  }
+  .card h3{font-size:1.05rem;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none}
+  .card p{color:var(--muted);font-size:.92rem}
+
+  .steps{display:grid;gap:12px;counter-reset:s}
+  .step{display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+  .num{counter-increment:s;flex:none;width:30px;height:30px;border-radius:50%;
+    display:grid;place-items:center;font-weight:800;font-size:.85rem;
+    background:linear-gradient(135deg,var(--gold-b),var(--gold));color:#1a1203}
+  .num::before{content:counter(s)}
+  .step b{display:block;margin-bottom:2px}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(75,179,172,.12);
+    border:1px solid rgba(75,179,172,.35);color:var(--teal);border-radius:999px;
+    padding:6px 13px;font-size:.78rem;font-weight:600;margin:4px 6px 4px 0}
+
+  .note{background:rgba(201,162,75,.08);border:1px solid rgba(201,162,75,.3);
+    border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;color:#e9dcc0;font-size:.9rem}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.82rem}
+
+  .installbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:rgba(14,32,51,.97);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);padding:12px 18px;
+    display:none;align-items:center;justify-content:space-between;gap:12px
+  }
+  .installbar.show{display:flex}
+  .installbar p{font-size:.85rem;margin:0}
+  .installbar .x{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="gem"></span><span class="serif">CENTRAGEM</span> <small>CONNECT</small></div>
+    <button class="installbtn" id="installbtn" hidden>⬇ Installer</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Or &amp; diamant · origine tracée · République centrafricaine</div>
+    <h1 class="serif">La confiance,<br>rendue <em>vérifiable.</em></h1>
+    <p class="lead">Une place de marché B2B où chaque lot porte un passeport numérique — origine, expertise, chaîne de possession — et où le paiement passe par un séquestre agréé. Le pont entre l'amont centrafricain et le marché mondial.</p>
+    <div class="cta">
+      <button class="btn btn-gold" id="exploreBtn">Explorer les lots →</button>
+      <button class="btn btn-ghost" id="accountBtn">Ouvrir un compte</button>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Le dispositif</div>
+    <h2>Quatre garanties, une seule plateforme</h2>
+    <p class="sub">CENTRAGEM Connect sécurise chaque étape de la transaction.</p>
+    <div class="grid">
+      <div class="card"><h3><span class="dot"></span>Passeport numérique</h3><p>Chaque lot d'or ou de diamant dispose d'une fiche de traçabilité vérifiable : origine, poids, caractéristiques, chaîne de contrôle.</p></div>
+      <div class="card"><h3><span class="dot"></span>Vendeur agréé</h3><p>Un parcours d'agrément vérifie l'identité et les documents de chaque vendeur avant toute mise en vente.</p></div>
+      <div class="card"><h3><span class="dot"></span>Acheteur qualifié</h3><p>Les acheteurs sont qualifiés (identité, capacité) pour garantir la fiabilité des échanges.</p></div>
+      <div class="card"><h3><span class="dot"></span>Séquestre agréé</h3><p>Fonds et marchandise sont sécurisés jusqu'à la bonne fin de l'opération.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Parcours vendeur</div>
+    <h2>De l'agrément à la vente</h2>
+    <div class="steps">
+      <div class="step"><div class="num"></div><div><b>Identification</b><span>Raison sociale, pays, représentant légal.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Dépôt des pièces</b><span>Agrément, justificatifs, documents d'origine.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Validation administrateur</b><span>Le système approuve la demande de vendeur agréé.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Mise en vente</b><span>Création des lots avec passeport numérique.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Parcours acheteur</div>
+    <h2>Acheter en confiance</h2>
+    <div class="steps">
+      <div class="step"><div class="num"></div><div><b>Qualification</b><span>Identité et capacité de l'acheteur vérifiées.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Sélection du lot</b><span>Choix dans le catalogue tracé.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Séquestre</b><span>Dépôt des fonds au séquestre agréé.</span></div></div>
+      <div class="step"><div class="num"></div><div><b>Livraison &amp; libération</b><span>Réception, puis libération des fonds au vendeur (commission 1,5 %).</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Marché</div>
+    <h2>Qui utilise CENTRAGEM</h2>
+    <div style="margin-top:4px">
+      <span class="badge">Coopératives minières</span>
+      <span class="badge">Bureaux d'achat</span>
+      <span class="badge">Exploitants</span>
+      <span class="badge">Négociants</span>
+      <span class="badge">Raffineries</span>
+      <span class="badge">Acheteurs institutionnels</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="note">
+      <b>Démonstrateur.</b> Cette application présente le fonctionnement de la future plateforme. Les lots, comptes et transactions sont fictifs ; aucun paiement réel n'est effectué. La version de production intégrera KYC, conformité AML, séquestre et paiements réels.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 CENTRAGEM — Place de marché B2B de l'or et du diamant tracés d'origine centrafricaine.<br>
+    <a href="confidentialite.html">Politique de confidentialité</a>
+  </div>
+</footer>
+
+<div class="installbar" id="installbar">
+  <p>📲 Installer CENTRAGEM sur cet appareil ?</p>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button class="installbtn" id="installbar-btn">Installer</button>
+    <button class="x" id="installbar-x">✕</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // Démo : boutons d'action
+  var ex = document.getElementById('exploreBtn');
+  var ac = document.getElementById('accountBtn');
+  if(ex) ex.addEventListener('click', function(){ alert("Catalogue de démonstration — lots tracés d'or et de diamant (données fictives)."); });
+  if(ac) ac.addEventListener('click', function(){ alert("Création de compte — démonstrateur. La version de production vérifiera l'identité (KYC)."); });
+
+  // PWA : installation
+  var deferred = null;
+  var btn = document.getElementById('installbtn');
+  var bar = document.getElementById('installbar');
+  var barBtn = document.getElementById('installbar-btn');
+  var barX = document.getElementById('installbar-x');
+
+  function standalone(){
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+  function doPrompt(){
+    if(deferred){ deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; if(btn) btn.hidden=true; if(bar) bar.classList.remove('show'); }); }
+    else { alert("Pour installer : menu de Chrome (⋮) → « Ajouter à l'écran d'accueil »."); }
+  }
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferred = e;
+    if(btn && !standalone()) btn.hidden = false;
+    if(bar && !standalone()) bar.classList.add('show');
+  });
+  window.addEventListener('appinstalled', function(){ if(btn) btn.hidden=true; if(bar) bar.classList.remove('show'); });
+  if(btn) btn.addEventListener('click', doPrompt);
+  if(barBtn) barBtn.addEventListener('click', doPrompt);
+  if(barX) barX.addEventListener('click', function(){ bar.classList.remove('show'); });
+
+  // Service worker
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').catch(function(){});
+    });
+  }
+})();
+</script>
+</body>
+</html>
